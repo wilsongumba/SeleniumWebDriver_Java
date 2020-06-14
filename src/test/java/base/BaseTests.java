@@ -1,15 +1,9 @@
 package base;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.*;
 import pages.HomePage;
-
-import java.util.List;
 
 public class BaseTests {
 
@@ -20,10 +14,14 @@ public class BaseTests {
     public void setUp(){
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         driver = new ChromeDriver();
-        driver.get("https://the-internet.herokuapp.com/");
         driver.manage().window().maximize();
-
+        goHome();
         homePage = new HomePage(driver);
+    }
+
+    @BeforeMethod
+    public void goHome(){
+        driver.get("https://the-internet.herokuapp.com/");
     }
 
     @AfterClass
@@ -31,6 +29,47 @@ public class BaseTests {
         driver.quit();
     }
 }
+
+
+
+
+
+//Run test after test(close browser and open new onw for each test
+
+//package base;
+//
+//        import org.openqa.selenium.WebDriver;
+//        import org.openqa.selenium.chrome.ChromeDriver;
+//        import org.testng.annotations.*;
+//        import pages.HomePage;
+//
+//public class BaseTests {
+//
+//    private WebDriver driver;
+//    protected HomePage homePage;
+//
+//    //@BeforeClass
+//    @BeforeMethod
+//    public void setUp(){
+//        System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
+//        driver = new ChromeDriver();
+//        driver.manage().window().maximize();
+//        driver.get("https://the-internet.herokuapp.com/");
+//        homePage = new HomePage(driver);
+//    }
+//
+//    //@AfterClass
+//    @AfterMethod
+//    public void tearDown(){
+//        driver.quit();
+//    }
+//}
+
+
+
+
+
+
 
 
 
