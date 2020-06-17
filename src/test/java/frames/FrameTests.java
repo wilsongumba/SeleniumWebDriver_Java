@@ -1,7 +1,6 @@
 package frames;
 
 import base.BaseTests;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;

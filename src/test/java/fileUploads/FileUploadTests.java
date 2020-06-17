@@ -3,8 +3,6 @@ package fileUploads;
 import base.BaseTests;
 import org.testng.annotations.Test;
 
-import java.util.Queue;
-
 import static org.testng.Assert.assertEquals;
 
 public class FileUploadTests extends BaseTests {
