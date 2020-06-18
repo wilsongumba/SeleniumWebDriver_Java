@@ -11,7 +11,7 @@ import java.time.Duration;
 public class DynamicLoadingExample2Page {
 
     private WebDriver driver;
-    private By statButton = By.cssSelector("#start button");
+    private By startButton = By.cssSelector("#start button");
     private By loadedText = By.id("finish");
 
     public DynamicLoadingExample2Page(WebDriver driver){
@@ -19,12 +19,16 @@ public class DynamicLoadingExample2Page {
     }
 
     public void clickStart(){
-        driver.findElement(statButton).click();
+        driver.findElement(startButton).click();
         FluentWait wait = new FluentWait(driver).withTimeout(Duration.ofSeconds(30)).pollingEvery(Duration.ofSeconds(1)).ignoring(NoSuchElementException.class);
         wait.until(ExpectedConditions.presenceOfElementLocated(loadedText));
     }
 
     public String getLoadedText(){
         return driver.findElement(loadedText).getText();
+    }
+
+    public boolean isStartButtonDisplayed(){
+        return driver.findElement(startButton).isDisplayed();
     }
 }
